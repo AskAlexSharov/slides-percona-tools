@@ -4,10 +4,10 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>reveal.js - The HTML Presentation Framework</title>
+		<title>MySQL optimization</title>
 
-		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
-		<meta name="author" content="Hakim El Hattab">
+		<meta name="description" content="MySQL optimization">
+		<meta name="author" content="Yuriy Vasiyarov">
 
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -37,316 +37,411 @@
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 				<section>
-					<h1>Reveal.js</h1>
-					<h3>HTML Presentations Made Easy</h3>
+					<h1>MySQL optimization</h1>
+					<h3>Specially for Lazada Core Team ;-)</h3>
 					<p>
-						<small>Created by <a href="http://hakim.se">Hakim El Hattab</a> / <a href="http://twitter.com/hakimel">@hakimel</a></small>
+						<small>Created by <a href="http://yvasiyarov.com/">Yuriy Vasiyarov</a></small>
 					</p>
 				</section>
 
 				<section>
-					<h2>Heads Up</h2>
-					<p>
-						reveal.js is a framework for easily creating beautiful presentations using HTML. You'll need a browser with
-						support for CSS 3D transforms to see it in its full glory.
-					</p>
-
-					<aside class="notes">
-						Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
-					</aside>
+					<h1>Where to start ?</h1>
 				</section>
 
-				<!-- Example of nested vertical slides -->
-				<section>
-					<section>
-						<h2>Vertical Slides</h2>
-						<p>
-							Slides can be nested inside of other slides,
-							try pressing <a href="#" class="navigate-down">down</a>.
-						</p>
-						<a href="#" class="image navigate-down">
-							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-						</a>
-					</section>
-					<section>
-						<h2>Basement Level 1</h2>
-						<p>Press down or up to navigate.</p>
-					</section>
-					<section>
-						<h2>Basement Level 2</h2>
-						<p>Cornify</p>
-						<a class="test" href="http://cornify.com">
-							<img width="280" height="326" src="https://s3.amazonaws.com/hakim-static/reveal-js/cornify.gif" alt="Unicorn">
-						</a>
-					</section>
-					<section>
-						<h2>Basement Level 3</h2>
-						<p>That's it, time to go back up.</p>
-						<a href="#/2" class="image">
-							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Up arrow" style="-webkit-transform: rotate(180deg);">
-						</a>
-					</section>
-				</section>
+                <section>
+                    <h2>What is our environment ?</h2>
+                    <ul>
+                        <li><h3>How much RAM do we have ?</h3></li>
+                        <li><h3>How fast our storage system ?</h3></li>
+                        <li><h3>How much CPU/Cores do we have?</h3></li>
+                    </ul>
+                </section>
 
-				<section>
-					<h2>Slides</h2>
-					<p>
-						Not a coder? No problem. There's a fully-featured visual editor for authoring these, try it out at <a href="http://slid.es" target="_blank">http://slid.es</a>.
-					</p>
-				</section>
+                <section>
+                    <h1>pt-summary</h1>
+                    <pre>
+# Percona Toolkit System Summary Report ######################
+        Date | 2014-03-14 09:13:58 UTC (local TZ: ICT +0700)
+    Hostname | 407070-db1.rocketinternet.amz.th
+      Uptime | 465 days, 13:28,  4 users,  load average: 1.71, 1.96, 2.25
+      System | Dell Inc.; PowerEdge R710; vNot Specified (<OUT OF SPEC>)
+ Service Tag | HXWFWBX
+    Platform | Linux
+     Release | Red Hat Enterprise Linux Server release 6.2 (Santiago)
+      Kernel | 2.6.32-220.28.1.el6.x86_64
+Architecture | CPU = 64-bit, OS = 64-bit
+   Threading | NPTL 2.12
+    Compiler | GNU CC version 4.4.6 20110731 (Red Hat 4.4.6-3).
+     SELinux | Disabled
+ Virtualized | No virtualization detected
+# Processor ##################################################
+  Processors | physical = 2, cores = 12, virtual = 24, hyperthreading = yes
+      Speeds | 24x2394.164
+      Models | 24xIntel(R) Xeon(R) CPU E5645 @ 2.40GHz
+      Caches | 24x12288 KB
+# Memory #####################################################
+       Total | 47.1G
+        Free | 962.9M
+        Used | physical = 46.2G, swap allocated = 2.0G, swap used = 84.8M, virtual = 46.3G
+     Buffers | 153.8M
+      Caches | 27.8G
+       Dirty | 220 kB
+                    </pre>
+                </section>
 
-				<section>
-					<h2>Point of View</h2>
-					<p>
-						Press <strong>ESC</strong> to enter the slide overview.
-					</p>
-					<p>
-						Hold down alt and click on any element to zoom in on it using <a href="http://lab.hakim.se/zoom-js">zoom.js</a>. Alt + click anywhere to zoom back out.
-					</p>
-				</section>
+                <section>
+                    <h1>MySQL configuration</h1>
+                    <ul>
+                        <li><h3>InnoDB buffer pool configuration ?</h3></li>
+                        <li><h3>Replication ?</h3></li>
+                        <li><h3>Query cache ?</h3></li>
+                        <li><h3>Key Percona Server features ?</h3></li>
+                    </ul>
+                </section>
+                <section>
+                    <h1>pt-mysql-summary</h1>
+                    <pre>
+# Percona Toolkit MySQL Summary Report #######################
+              System time | 2014-03-14 09:43:17 UTC (local TZ: ICT +0700)
+# Instances ##################################################
+  Port  Data Directory             Nice OOM Socket
+  ===== ========================== ==== === ======
+   3306 /var/lib/mysql             0    0   /var/lib/mysql/mysql.sock
+# MySQL Executable ###########################################
+       Path to executable | /usr/sbin/mysqld
+              Has symbols | No
+# Report On Port 3306 ########################################
+                     User | icingamon@%
+                     Time | 2014-03-14 16:43:17 (ICT)
+                 Hostname | some host name
+                  Version | 5.5.34-32.0-log Percona Server (GPL), Release rel32.0, Revision 591
+                 Built On | Linux x86_64
+                  Started | 2014-02-13 09:09 (up 29+07:33:45)
+                Databases | 9
+                  Datadir | /var/lib/mysql/
+                Processes | 25 connected, 8 running
+              Replication | Is not a slave, has 4 slaves connected
+                  Pidfile | /var/run/mysqld/mysqld.pid (exists)
+......................a lot of other stuff goes below.......
+                    </pre>
+                </section>
 
-				<section>
-					<h2>Works in Mobile Safari</h2>
-					<p>
-						Try it out! You can swipe through the slides and pinch your way to the overview.
-					</p>
-				</section>
+                <section>
+                    <h1>What is our load ?</h1>
+                    <ul>
+                        <li><h3>OLTP or OLAP ?</h3></li>
+                        <li><h3>CPU bound or IO bound ?</h3></li>
+                        <li><h3>Can we reduce dataset ?</h3></li>
+                        <li><h3>Can we optimize queries ?</h3></li>
+                    </ul>
+                </section>
 
-				<section>
-					<h2>Marvelous Unordered List</h2>
-					<ul>
-						<li>No order here</li>
-						<li>Or here</li>
-						<li>Or here</li>
-						<li>Or here</li>
-					</ul>
-				</section>
 
-				<section>
-					<h2>Fantastic Ordered List</h2>
-					<ol>
-						<li>One is smaller than...</li>
-						<li>Two is smaller than...</li>
-						<li>Three!</li>
-					</ol>
-				</section>
+                <section>
+                    <h1>pt-duplicate-key-checker</h1>
+                    <pre>
+# ########################################################################
+# bob_live.campaign_has_catalog_segment
+# ########################################################################
 
-				<section data-markdown>
-					<script type="text/template">
-						## Markdown support
+# fk_campaign is a left-prefix of uk_campaign_has_catalog_segment
+# Key definitions:
+#   KEY `fk_campaign` (`fk_campaign`),
+#   UNIQUE KEY `uk_campaign_has_catalog_segment` (`fk_campaign`,`fk_catalog_segment`),
+# Column types:
+#         `fk_campaign` int(11) not null
+#         `fk_catalog_segment` int(10) unsigned not null
+# To remove this duplicate index, execute:
+ALTER TABLE `bob_live`.`campaign_has_catalog_segment` DROP INDEX `fk_campaign`;
+                    </pre>
+                </section>
 
-						For those of you who like that sort of thing. Instructions and a bit more info available [here](https://github.com/hakimel/reveal.js#markdown).
+                <section>
+                    <h2>Should be used carefully. Sometimes duplicate indexes are used :-)</h2>
+                </section>
 
-						```
-						<section data-markdown>
-						  ## Markdown support
+                <section data-markdown>
+                    <script type="text/template">
+                        ## What is biggest tables ?
+                        ```
+SELECT CONCAT(table_schema, '.', table_name),
+CONCAT(ROUND(table_rows / 1000000, 2), 'M')                                    rows,
+CONCAT(ROUND(data_length / ( 1024 * 1024 * 1024 ), 2), 'G')                    DATA,
+CONCAT(ROUND(index_length / ( 1024 * 1024 * 1024 ), 2), 'G')                   idx,
+CONCAT(ROUND(( data_length + index_length ) / ( 1024 * 1024 * 1024 ), 2), 'G') total,
+ROUND(index_length / data_length, 2)                                           idxfrac
+FROM   information_schema.TABLES
+ORDER  BY data_length + index_length DESC
+LIMIT  10;
+                        ```
+                    </script>
+                </section>
 
-						  For those of you who like that sort of thing.
-						  Instructions and a bit more info available [here](https://github.com/hakimel/reveal.js#markdown).
-						</section>
-						```
-					</script>
-				</section>
+                <section>
+                    <h1>Surprise!</h1>
+                    <pre>
++------------------------------------------------+-------+-------+-------+-------+---------+
+| CONCAT(table_schema, '.', table_name)          | rows  | DATA  | idx   | total | idxfrac |
++------------------------------------------------+-------+-------+-------+-------+---------+
+| bob_live.alice_message                         | 0.35M | 6.52G | 0.00G | 6.52G |    0.00 |
+| bob_live.ums                                   | 1.64M | 4.40G | 0.00G | 4.40G |    0.00 |
+| oms_live.wms_inventory_history                 | 6.47M | 0.88G | 1.64G | 2.51G |    1.87 |
+| oms_staging.wms_inventory_history              | 5.88M | 0.77G | 1.47G | 2.24G |    1.90 |
+| oms_live.ims_report_dump                       | 0.86M | 1.49G | 0.05G | 1.54G |    0.03 |
+| bob_live.catalog_config                        | 0.18M | 1.26G | 0.10G | 1.36G |    0.08 |
+| tmp_bob_live_for_developer_dump.catalog_config | 0.28M | 1.24G | 0.10G | 1.34G |    0.08 |
+| bob_staging.catalog_config_bak                 | 0.11M | 1.17G | 0.10G | 1.26G |    0.08 |
+| bob_staging.catalog_config                     | 0.13M | 1.17G | 0.10G | 1.26G |    0.08 |
+| oms_staging.ims_report_dump                    | 0.77M | 1.16G | 0.04G | 1.20G |    0.04 |
++------------------------------------------------+-------+-------+-------+-------+---------+
+10 rows in set (20.00 sec)
+                    </pre>
+                </section>
 
-				<section id="transitions">
-					<h2>Transition Styles</h2>
-					<p>
-						You can select from different transitions, like: <br>
-						<a href="?transition=cube#/transitions">Cube</a> -
-						<a href="?transition=page#/transitions">Page</a> -
-						<a href="?transition=concave#/transitions">Concave</a> -
-						<a href="?transition=zoom#/transitions">Zoom</a> -
-						<a href="?transition=linear#/transitions">Linear</a> -
-						<a href="?transition=fade#/transitions">Fade</a> -
-						<a href="?transition=none#/transitions">None</a> -
-						<a href="?#/transitions">Default</a>
-					</p>
-				</section>
+                <section>
+                    <h1>Slow query analysis</h1>
+                    <ol>
+                        <li>log_slow_verbosity=profile</li>
+                        <li>slow_query_log_always_write_time=0</li>
+                        <li>slow_query_log=ON</li>
+                        <li>Wait for some time(30 min)</li>
+                        <li>slow_query_log=OFF</li>
+                    </ol>
+                </section>
 
-				<section id="themes">
-					<h2>Themes</h2>
-					<p>
-						Reveal.js comes with a few themes built in: <br>
-						<a href="?#/themes">Default</a> -
-						<a href="?theme=sky#/themes">Sky</a> -
-						<a href="?theme=beige#/themes">Beige</a> -
-						<a href="?theme=simple#/themes">Simple</a> -
-						<a href="?theme=serif#/themes">Serif</a> -
-						<a href="?theme=night#/themes">Night</a> <br>
-						<a href="?theme=moon.css#/themes">Moon</a> -
-						<a href="?theme=simple.css#/themes">Simple</a> -
-						<a href="?theme=solarized.css#/themes">Solarized</a>
-					</p>
-					<p>
-						<small>
-							* Theme demos are loaded after the presentation which leads to flicker. In production you should load your theme in the <code>&lt;head&gt;</code> using a <code>&lt;link&gt;</code>.
-						</small>
-					</p>
-				</section>
+                <section>
+                    <h1>Time to take your gun..</h1>
+                    <h3>pt-query-digest - Analyze MySQL queries from logs, processlist, and tcpdump.</h3>
+                </section>
 
-				<section>
-					<h2>Global State</h2>
-					<p>
-						Set <code>data-state="something"</code> on a slide and <code>"something"</code>
-						will be added as a class to the document element when the slide is open. This lets you
-						apply broader style changes, like switching the background.
-					</p>
-				</section>
+                <section>
+                    <h1>Where is our speed, nigga ?</h1>
+                    <pre>
+# 420.9s user time, 2.2s system time, 233.27M rss, 424.34M vsz
+# Current date: Mon Mar 17 11:43:59 2014
+# Hostname: 407070-db1.rocketinternet.amz.th
+# Files: mysql-slow.log
+# Overall: 641.75k total, 2.13k unique, 410.07 QPS, 4.15x concurrency ____
+# Time range: 2014-03-17 11:02:00 to 11:28:05
+# Attribute          total     min     max     avg     95%  stddev  median
+# ============     ======= ======= ======= ======= ======= ======= =======
+# Exec time          6493s     1us     50s    10ms     3ms   291ms   167us
+# Lock time            40s       0   389ms    62us   144us   827us    38us
+# Rows sent         12.08M       0 100.90k   19.74   34.95  274.76    0.99
+# Rows examine       2.38G       0  11.19M   3.89k  151.03  76.32k    0.99
+# Rows affecte     630.68k       0   7.83k    1.01       0   62.52       0
+# Rows read          2.38G       0  11.19M   3.89k  151.03  76.32k    0.99
+# Bytes sent         1.59G       0  25.81M   2.61k   8.06k  44.26k  420.77
+# Merge passes          56       0       1    0.00       0    0.01       0
+# Tmp tables        72.84k       0      70    0.12    0.99    0.76       0
+# Tmp disk tbl       7.48k       0      10    0.01       0    0.13       0
+# Tmp tbl size      14.30G       0 703.23M  23.36k       0   1.56M       0
+# Query size       157.79M       6   2.71M  257.81  563.87   4.03k  107.34
+# Profile Open        0.00    0.00    0.00    0.00    0.00    0.00    0.00
+# Profile Open        0.00    0.00    0.00    0.00    0.00    0.00    0.00
+# Profile Send        7.99    0.00    7.98    0.67    0.00    2.13    0.00
+# Profile Send        7.61    0.00    7.61    0.63    0.00    2.03    0.00
+# Profile Sort        0.00    0.00    0.00    0.00    0.00    0.00    0.00
+                    </pre>
+                </section>
 
-				<section data-state="customevent">
-					<h2>Custom Events</h2>
-					<p>
-						Additionally custom events can be triggered on a per slide basis by binding to the <code>data-state</code> name.
-					</p>
-					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
-Reveal.addEventListener( 'customevent', function() {
-	console.log( '"customevent" has fired' );
-} );
-					</code></pre>
-				</section>
+                <section>
+                    <h1>Top of bastards</h1>
+                    <pre>
+# Rank Query ID           Response time   Calls  R/Call  V/M   Item
+# ==== ================== =============== ====== ======= ===== ===========
+#    1 0x32259DD87687D06D  963.4864 14.8%   1005  0.9587  2.98 SELECT catalog_config_has_catalog_category
+#    2 0xBA4ADDD21BD14885  607.2317  9.4%     52 11.6775  0.98 SELECT wms_inventory wms_inventory_status ims_product
+#    3 0x335CCEEA66DE99C8  581.0650  8.9%     50 11.6213 10.43 SELECT ums
+#    4 0x6C6E915ECB8CE0A0  418.3177  6.4%    667  0.6272  4.02 SELECT ims_sales_order_item
+#    5 0x28476B9BD039C026  324.0870  5.0%    941  0.3444  0.04 SELECT customer
+#    6 0xB194CCAEA82FD43C  299.2335  4.6%     16 18.7021  1.11 SELECT catalog_simple catalog_config catalog_brand
+#    7 0x9C6125C72EEF46A2  293.0583  4.5%     48  6.1054  1.33 SELECT ims_sales_order ims_sales_order_address ims_cross_shopping_master_sales_order
+#    8 0x21BCF45426C3BFB9  253.1419  3.9%     10 25.3142  0.91 SELECT oms_package oms_package_status ims_sales_order
+#    9 0xE32B71E542C89D7A  198.3188  3.1%    105  1.8888  1.54 SELECT ims_sales_order_item oms_package_item oms_package
+#   10 0x19A0983F3F0BB897  180.6802  2.8%    171  1.0566  0.84 SELECT catalog_brand catalog_simple catalog_source supplier
+                    </pre>
+                </section>
 
-				<section>
-					<section data-background="#007777">
-						<h2>Slide Backgrounds</h2>
-						<p>
-							Set <code>data-background="#007777"</code> on a slide to change the full page background to the given color. All CSS color formats are supported.
-						</p>
-						<a href="#" class="image navigate-down">
-							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-						</a>
-					</section>
-					<section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png">
-						<h2>Image Backgrounds</h2>
-						<pre><code>&lt;section data-background="image.png"&gt;</code></pre>
-					</section>
-					<section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" data-background-repeat="repeat" data-background-size="100px">
-						<h2>Repeated Image Backgrounds</h2>
-						<pre><code style="word-wrap: break-word;">&lt;section data-background="image.png" data-background-repeat="repeat" data-background-size="100px"&gt;</code></pre>
-					</section>
-				</section>
+                <section>
+                    <h2>Show me details!</h2>
+                    <pre>
+# Query 3: 0.03 QPS, 0.38x concurrency, ID 0x335CCEEA66DE99C8 at byte 417049864
+# This item is included in the report because it matches --limit.
+# Scores: V/M = 10.43
+# Time range: 2014-03-17 11:02:22 to 11:28:02
+# Attribute    pct   total     min     max     avg     95%  stddev  median
+# ============ === ======= ======= ======= ======= ======= ======= =======
+# Count          0      50
+# Exec time      8    581s    17ms     31s     12s     25s     11s     19s
+# Lock time      0     4ms    46us   216us    83us   185us    40us    73us
+# Rows sent      0     213       0      14    4.26   11.95    4.60    2.90
+# Rows examine   1  44.24M   3.38k   1.70M 905.98k   1.69M 860.78k   1.69M
+# Rows affecte   0       0       0       0       0       0       0       0
+# Rows read      1  44.24M   3.38k   1.70M 905.98k   1.69M 860.78k   1.69M
+# Bytes sent     0 369.06k     548  29.30k   7.38k  20.37k   8.09k   1.86k
+# Merge passes   0       0       0       0       0       0       0       0
+# Tmp tables     0       0       0       0       0       0       0       0
+# Tmp disk tbl   0       0       0       0       0       0       0       0
+# Tmp tbl size   0       0       0       0       0       0       0       0
+# Query size     0   8.30k     170     170     170     170       0     170
+# InnoDB:
+# IO r bytes    47  98.75G   5.38M   3.82G   1.97G   3.67G   1.82G   3.67G
+# IO r ops      47   6.17M     344 244.74k 126.40k 233.54k 115.98k 233.54k
+# IO r wait     35     42s     1ms      2s   847ms      2s   796ms      1s
+# pages distin   3   1.60M     310  62.61k  32.69k  62.55k  31.05k  62.55k
+# queue wait     0       0       0       0       0       0       0       0
+# rec lock wai   0       0       0       0       0       0       0       0
+# Boolean:
+# Filesort     100% yes,   0% no
+# Full scan    100% yes,   0% no
+# String:
+# Databases    bob_live (26/52%), bob_stagin... (24/48%)
+# Hosts        407069-web2
+# InnoDB trxID 899F9177 (1/2%), 899FF59D (1/2%)... 48 more
+# Last errno   0
+# Users        bob_live (26/52%), bob_stagin... (24/48%)
+# Query_time distribution
+#   1us
+#  10us
+# 100us
+#   1ms
+#  10ms  ########################################################
+# 100ms  ##
+#    1s
+#  10s+  ################################################################
+# Tables
+#    SHOW TABLE STATUS FROM `bob_live` LIKE 'ums'\G
+#    SHOW CREATE TABLE `bob_live`.`ums`\G
+# EXPLAIN /*!50100 PARTITIONS*/
+SELECT `u`.* FROM `ums` AS `u` WHERE (state = 'initial') AND (created_at + INTERVAL POW(5, calls) MINUTE < '2014-03-17 11:20:02') ORDER BY `is_top_priority` ASC LIMIT 500\G
+                    </pre>
+                </section>
+                <section>
+                    <h2>Show me details!</h2>
+                    <pre>
+# Boolean:
+# Filesort     100% yes,   0% no
+# Full scan    100% yes,   0% no
+# String:
+# Databases    bob_live (26/52%), bob_stagin... (24/48%)
+# Hosts        407069-web2
+# InnoDB trxID 899F9177 (1/2%), 899FF59D (1/2%)... 48 more
+# Last errno   0
+# Users        bob_live (26/52%), bob_stagin... (24/48%)
+# Query_time distribution
+#   1us
+#  10us
+# 100us
+#   1ms
+#  10ms  ########################################################
+# 100ms  ##
+#    1s
+#  10s+  ################################################################
+# Tables
+#    SHOW TABLE STATUS FROM `bob_live` LIKE 'ums'\G
+#    SHOW CREATE TABLE `bob_live`.`ums`\G
+# EXPLAIN /*!50100 PARTITIONS*/
+SELECT `u`.* FROM `ums` AS `u` WHERE (state = 'initial') AND (created_at + INTERVAL POW(5, calls) MINUTE < '2014-03-17 11:20:02') ORDER BY `is_top_priority` ASC LIMIT 500\G
+                    </pre>
+                </section>
 
-				<section data-transition="linear" data-background="#4d7e65" data-background-transition="slide">
-					<h2>Background Transitions</h2>
-					<p>
-						Pass reveal.js the <code>backgroundTransition: 'slide'</code> config argument to make backgrounds slide rather than fade.
-					</p>
-				</section>
+                <section>
+                    <h1>EXPLAIN EXTENDED</h1>
+                    <pre>
+SELECT `u`.* FROM `ums` AS `u` WHERE (state = 'initial') AND (created_at + INTERVAL POW(5, calls) MINUTE < '2014-03-17 11:20:02') ORDER BY `is_top_priority` ASC LIMIT 500
++----+--------+-------+------+-----+---------+---------+----------+---------------------------+
+| id | select | table | type | key | key_len | rows    | filtered | Extra                     |
++----+--------+-------+------+-----+---------+---------+----------+---------------------------+
+|  1 | SIMPLE | u     | ALL  | NULL| NULL    | 1636560 |   100.00 | Using where;Usingfilesort |
++----+--------+-------+------+-----+---------+---------+----------+---------------------------+
+                    </pre>
+                </section>
 
-				<section data-transition="linear" data-background="#8c4738" data-background-transition="slide">
-					<h2>Background Transition Override</h2>
-					<p>
-						You can override background transitions per slide by using <code>data-background-transition="slide"</code>.
-					</p>
-				</section>
+                <section>
+                    <h1>Why ??</h1>
+                </section>
 
-				<section>
-					<h2>Clever Quotes</h2>
-					<p>
-						These guys come in two forms, inline: <q cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-						&ldquo;The nice thing about standards is that there are so many to choose from&rdquo;</q> and block:
-					</p>
-					<blockquote cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-						&ldquo;For years there has been a theory that millions of monkeys typing at random on millions of typewriters would
-						reproduce the entire works of Shakespeare. The Internet has proven this theory to be untrue.&rdquo;
-					</blockquote>
-				</section>
+                <section>
+                    <h1>More complex query</h1>
+                    <pre>
++----+--------------------+--------------------------------------+--------+---------------------------------------------------------------+-----------------------------------------+---------+----------------------------------------------------------------+------+----------+-----------------------------+
+| id | select_type        | table                                | type   | possible_keys                                                 | key                                     | key_len | ref                                                            | rows | filtered | Extra                       |
++----+--------------------+--------------------------------------+--------+---------------------------------------------------------------+-----------------------------------------+---------+----------------------------------------------------------------+------+----------+-----------------------------+
+|  1 | PRIMARY            | catalog_category                     | ALL    | lft                                                           | NULL                                    | NULL    | NULL                                                           | 9816 |    50.00 | Using where; Using filesort |
+|  4 | DEPENDENT SUBQUERY | catalog_category_has_catalog_segment | ref    | uk_catalog_category_has_catalog_segment,fk_catalog_category   | uk_catalog_category_has_catalog_segment | 4       | bob_live.catalog_category.id_catalog_category                  |    1 |   100.00 | Using index                 |
+|  3 | DEPENDENT SUBQUERY | catalog_config_has_catalog_category  | ref    | fk_catalog_category                                           | fk_catalog_category                     | 4       | bob_live.catalog_category.id_catalog_category                  |  296 |   100.00 |                             |
+|  2 | DEPENDENT SUBQUERY | catalog_config_has_catalog_category  | ref    | uk_id_catalog_config_has_catalog_category,fk_catalog_category | fk_catalog_category                     | 4       | bob_live.catalog_category.id_catalog_category                  |  296 |   100.00 |                             |
+|  2 | DEPENDENT SUBQUERY | catalog_config                       | eq_ref | PRIMARY,status                                                | PRIMARY                                 | 4       | bob_live.catalog_config_has_catalog_category.fk_catalog_config |    1 |   100.00 | Using where                 |
++----+--------------------+--------------------------------------+--------+---------------------------------------------------------------+-----------------------------------------+---------+----------------------------------------------------------------+------+----------+-----------------------------+
+                    </pre>
+                </section>
 
-				<section>
-					<h2>Pretty Code</h2>
-					<pre><code data-trim contenteditable>
-function linkify( selector ) {
-  if( supports3DTransforms ) {
+                <section>
+                    <h1>Hard to understand ??</h1>
+                </section>
 
-    var nodes = document.querySelectorAll( selector );
+                <section>
+                    <h1>pt-visual-explain me!</h1>
+                </section>
 
-    for( var i = 0, len = nodes.length; i &lt; len; i++ ) {
-      var node = nodes[i];
+                <section>
+                    <h1>More complex query</h1>
+                    <pre>
+DEPENDENT SUBQUERY
++- JOIN
+|  +- Filter with WHERE
+|  |  +- Bookmark lookup
+|  |     +- Table
+|  |     |  table          catalog_config
+|  |     |  possible_keys  PRIMARY,status
+|  |     +- Unique index lookup
+|  |        key            catalog_config->PRIMARY
+|  |        possible_keys  PRIMARY,status
+|  |        key_len        4
+|  |        ref            bob_live.catalog_config_has_catalog_category.fk_catalog_config
+|  |        rows           1
+|  +- Bookmark lookup
+|     +- Table
+|     |  table          catalog_config_has_catalog_category
+|     |  possible_keys  uk_id_catalog_config_has_catalog_category,fk_catalog_category
+|     +- Index lookup
+|        key            catalog_config_has_catalog_category->fk_catalog_category
+|        possible_keys  uk_id_catalog_config_has_catalog_category,fk_catalog_category
+|        key_len        4
+|        ref            bob_live.catalog_category.id_catalog_category
+|        rows           34
++- DEPENDENT SUBQUERY
+   +- Bookmark lookup
+   |  +- Table
+   |  |  table          catalog_config_has_catalog_category
+   |  |  possible_keys  fk_catalog_category
+   |  +- Index lookup
+   |     key            catalog_config_has_catalog_category->fk_catalog_category
+   |     possible_keys  fk_catalog_category
+   |     key_len        4
+   |     ref            bob_live.catalog_category.id_catalog_category
+   |     rows           34
+   +- DEPENDENT SUBQUERY
+      +- Index lookup
+      |  key            catalog_category_has_catalog_segment->uk_catalog_category_has_catalog_segment
+      |  possible_keys  uk_catalog_category_has_catalog_segment,fk_catalog_category
+      |  key_len        4
+      |  ref            bob_live.catalog_category.id_catalog_category
+      |  rows           1
+      +- Filesort
+         +- Filter with WHERE
+            +- Table scan
+               rows           9929
+               +- Table
+                  table          catalog_category
+                  possible_keys  lft
+                    </pre>
+                </section>
 
-      if( !node.className ) {
-        node.className += ' roll';
-      }
-    }
-  }
-}
-					</code></pre>
-					<p>Courtesy of <a href="http://softwaremaniacs.org/soft/highlight/en/description/">highlight.js</a>.</p>
-				</section>
-
-				<section>
-					<h2>Intergalactic Interconnections</h2>
-					<p>
-						You can link between slides internally,
-						<a href="#/2/3">like this</a>.
-					</p>
-				</section>
-
-				<section>
-					<section id="fragments">
-						<h2>Fragmented Views</h2>
-						<p>Hit the next arrow...</p>
-						<p class="fragment">... to step through ...</p>
-						<ol>
-							<li class="fragment"><code>any type</code></li>
-							<li class="fragment"><em>of view</em></li>
-							<li class="fragment"><strong>fragments</strong></li>
-						</ol>
-
-						<aside class="notes">
-							This slide has fragments which are also stepped through in the notes window.
-						</aside>
-					</section>
-					<section>
-						<h2>Fragment Styles</h2>
-						<p>There's a few styles of fragments, like:</p>
-						<p class="fragment grow">grow</p>
-						<p class="fragment shrink">shrink</p>
-						<p class="fragment roll-in">roll-in</p>
-						<p class="fragment fade-out">fade-out</p>
-						<p class="fragment highlight-red">highlight-red</p>
-						<p class="fragment highlight-green">highlight-green</p>
-						<p class="fragment highlight-blue">highlight-blue</p>
-						<p class="fragment current-visible">current-visible</p>
-						<p class="fragment highlight-current-blue">highlight-current-blue</p>
-					</section>
-				</section>
-
-				<section>
-					<h2>Spectacular image!</h2>
-					<a class="image" href="http://lab.hakim.se/meny/" target="_blank">
-						<img width="320" height="299" src="http://s3.amazonaws.com/hakim-static/portfolio/images/meny.png" alt="Meny">
-					</a>
-				</section>
-
-				<section>
-					<h2>Export to PDF</h2>
-					<p>Presentations can be <a href="https://github.com/hakimel/reveal.js#pdf-export">exported to PDF</a>, below is an example that's been uploaded to SlideShare.</p>
-					<iframe id="slideshare" src="http://www.slideshare.net/slideshow/embed_code/13872948" width="455" height="356" style="margin:0;overflow:hidden;border:1px solid #CCC;border-width:1px 1px 0;margin-bottom:5px" allowfullscreen> </iframe>
-					<script>
-						document.getElementById('slideshare').attributeName = 'allowfullscreen';
-					</script>
-				</section>
-
-				<section>
-					<h2>Take a Moment</h2>
-					<p>
-						Press b or period on your keyboard to enter the 'paused' mode. This mode is helpful when you want to take distracting slides off the screen
-						during a presentation.
-					</p>
-				</section>
-
-				<section>
-					<h2>Stellar Links</h2>
-					<ul>
-						<li><a href="http://slid.es">Try the online editor</a></li>
-						<li><a href="https://github.com/hakimel/reveal.js">Source code on GitHub</a></li>
-						<li><a href="http://twitter.com/hakimel">Follow me on Twitter</a></li>
-					</ul>
-				</section>
-
-				<section>
-					<h1>THE END</h1>
-					<h3>BY Hakim El Hattab / hakim.se</h3>
-				</section>
+                <section>
+                    <h1>THE END</h1>
+                </section>
 
 			</div>
 
@@ -360,6 +455,7 @@ function linkify( selector ) {
 			// Full list of configuration options available here:
 			// https://github.com/hakimel/reveal.js#configuration
 			Reveal.initialize({
+                width: 1200,
 				controls: true,
 				progress: true,
 				history: true,
